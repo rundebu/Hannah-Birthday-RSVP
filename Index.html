@@ -362,7 +362,7 @@
                 </div>
                 <div class="detail-item">
                     <span>📍</span>
-                    Baraboo Children's Museum
+                    <a href="https://maps.google.com/?q=1212+8th+St,+Baraboo,+WI+53913" target="_blank" style="color:white;text-decoration:underline;text-underline-offset:3px;">Baraboo Children's Museum</a>
                 </div>
             </div>
 
@@ -379,8 +379,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Cell Phone Number</label>
+                            <input type="text" id="phone" name="phone" placeholder="(608) 555-1234">
                         </div>
 
                         <div class="form-group">
@@ -408,11 +413,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="allergies">Allergies or Dietary Restrictions</label>
-                            <textarea id="allergies" name="allergies" placeholder="Any allergies we should know about?"></textarea>
-                        </div>
-
-                        <div class="form-group">
                             <label for="comments">Questions or Special Notes</label>
                             <textarea id="comments" name="comments" placeholder="Anything else?"></textarea>
                         </div>
@@ -425,7 +425,7 @@
                     <span class="big-emoji">🎉🦄🌈</span>
                     <h2>You're on the list!</h2>
                     <p>Thanks for RSVPing! We're so excited to celebrate Hannah's 5th birthday with you. Get ready for unicorns, rainbows, and loads of fun!</p>
-                    <div class="date-reminder">📅 See you Sunday, March 29th at 1:30 PM<br>Baraboo Children's Museum</div>
+                    <div class="date-reminder">📅 See you Sunday, March 29th at 1:30 PM<br><a href="https://maps.google.com/?q=1212+8th+St,+Baraboo,+WI+53913" target="_blank" style="color:white;text-decoration:underline;text-underline-offset:3px;">Baraboo Children's Museum</a></div>
                 </div>
             </div>
         </div>
@@ -443,6 +443,7 @@
             const formData = {
                 parentName: document.getElementById('parentName').value,
                 email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
                 childName: document.getElementById('childName').value,
                 attending: document.querySelector('input[name="attending"]:checked').value,
                 numGuests: document.getElementById('numGuests').value,
