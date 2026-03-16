@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannah's 5th Birthday - Unicorns & Rainbows!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink: #ff6eb4;
+            --purple: #b56cff;
+            --sky: #6ec6ff;
+            --yellow: #ffe066;
+            --mint: #6effd6;
+            --white: #fff;
+            --soft-bg: #fff0fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            background: var(--soft-bg);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Rainbow stripe header bar */
+        .rainbow-bar {
+            height: 10px;
+            background: linear-gradient(90deg,
+                #ff6b6b, #ffa94d, #ffe066, #6effd6, #6ec6ff, #b56cff, #ff6eb4
+            );
+        }
+
+        /* Floating unicorn/star decorations */
+        .bg-decor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 28px;
+            animation: twinkle 3s ease-in-out infinite;
+            opacity: 0.18;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.18; }
+            50% { transform: scale(1.3) rotate(15deg); opacity: 0.32; }
+        }
+
+        .main {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 16px 50px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow:
+                0 0 0 5px #ffb3e0,
+                0 8px 40px rgba(181, 108, 255, 0.18);
+            overflow: hidden;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(160deg, #ffd6f0 0%, #e8d6ff 50%, #d6f0ff 100%);
+            padding: 36px 28px 28px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🌈';
+            font-size: 90px;
+            position: absolute;
+            top: -18px;
+            left: -22px;
+            opacity: 0.18;
+            transform: rotate(-20deg);
+        }
+
+        .hero::after {
+            content: '🦄';
+            font-size: 80px;
+            position: absolute;
+            bottom: -14px;
+            right: -10px;
+            opacity: 0.22;
+        }
+
+        .big-emoji {
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 10px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--purple);
+            font-size: 30px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            text-shadow: 2px 3px 0px #ffb3e0;
+        }
+
+        .hero .tagline {
+            font-family: 'Pacifico', cursive;
+            color: var(--pink);
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Details strip */
+        .details-strip {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: linear-gradient(90deg, #ff6eb4, #b56cff, #6ec6ff);
+            padding: 14px 20px;
+        }
+
+        .detail-item {
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            text-align: center;
+            padding: 0 14px;
+            border-right: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .detail-item:last-child { border-right: none; }
+
+        .detail-item span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+
+        /* Form section */
+        .form-body {
+            padding: 30px 28px 36px;
+        }
+
+        .form-intro {
+            text-align: center;
+            color: #a066cc;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffd6f015, #e8d6ff30);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1.5px dashed #d4a6f5;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #7040aa;
+            font-weight: 800;
+            font-size: 13.5px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2.5px solid #e8cfff;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Nunito', sans-serif;
+            color: #442266;
+            background: #fdf5ff;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(181,108,255,0.15);
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 75px;
+        }
+
+        /* Attending toggle */
+        .attend-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .attend-option {
+            flex: 1;
+        }
+
+        .attend-option input[type="radio"] {
+            display: none;
+        }
+
+        .attend-option label {
+            display: block;
+            text-align: center;
+            padding: 13px 10px;
+            border-radius: 14px;
+            border: 2.5px solid #e8cfff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: none;
+            color: #9966cc;
+            background: #fdf5ff;
+            transition: all 0.2s;
+            margin: 0;
+        }
+
+        .attend-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(181,108,255,0.3);
+        }
+
+        .attend-option label:hover {
+            border-color: var(--purple);
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 60%, var(--sky) 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-family: 'Pacifico', cursive;
+            font-weight: 400;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(181,108,255,0.35);
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(181,108,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+        .submit-btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+        /* Success */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 50px 28px;
+        }
+
+        .success-message .big-emoji { font-size: 72px; }
+
+        .success-message h2 {
+            font-family: 'Pacifico', cursive;
+            color: var(--purple);
+            font-size: 26px;
+            margin-bottom: 14px;
+            text-shadow: 2px 2px 0 #ffb3e0;
+        }
+
+        .success-message p {
+            color: #885caa;
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .success-message .date-reminder {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #ffd6f0, #e8d6ff);
+            border-radius: 14px;
+            padding: 14px 20px;
+            font-weight: 800;
+            color: var(--purple);
+            font-size: 15px;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 24px; }
+            .form-body { padding: 24px 18px 30px; }
+            .details-strip { flex-wrap: wrap; gap: 10px; }
+            .detail-item { border-right: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="rainbow-bar"></div>
+
+    <!-- Floating background decorations -->
+    <div class="bg-decor">
+        <span class="star" style="top:5%;left:3%;animation-delay:0s">⭐</span>
+        <span class="star" style="top:12%;right:6%;animation-delay:0.5s">🌸</span>
+        <span class="star" style="top:30%;left:1%;animation-delay:1s">💜</span>
+        <span class="star" style="top:50%;right:2%;animation-delay:1.5s">✨</span>
+        <span class="star" style="top:70%;left:4%;animation-delay:0.8s">🌈</span>
+        <span class="star" style="top:80%;right:5%;animation-delay:0.3s">⭐</span>
+        <span class="star" style="top:90%;left:8%;animation-delay:1.2s">💫</span>
+    </div>
+
+    <div class="main">
+        <div class="card">
+            <div class="hero">
+                <span class="big-emoji">🦄</span>
+                <h1>Hannah's 5th Birthday!</h1>
+                <div class="tagline">Unicorns & Rainbows 🌈✨</div>
+            </div>
+
+            <div class="details-strip">
+                <div class="detail-item">
+                    <span>📅</span>
+                    Sunday, March 29
+                </div>
+                <div class="detail-item">
+                    <span>⏰</span>
+                    1:30 PM
+                </div>
+                <div class="detail-item">
+                    <span>📍</span>
+                    Baraboo Children's Museum
+                </div>
+            </div>
+
+            <div class="form-body">
+                <div class="form-intro">
+                    🌟 Please RSVP by March 27th so we can make the magic happen! 🌟
+                </div>
+
+                <div id="rsvpForm">
+                    <form id="rsvpFormElement">
+                        <div class="form-group">
+                            <label for="parentName">Parent / Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" placeholder="Your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="childName">Child's Name *</label>
+                            <input type="text" id="childName" name="childName" placeholder="Child's name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Will you be joining us? *</label>
+                            <div class="attend-group">
+                                <div class="attend-option">
+                                    <input type="radio" id="attendYes" name="attending" value="yes" required>
+                                    <label for="attendYes">🎉 Yes, we'll be there!</label>
+                                </div>
+                                <div class="attend-option">
+                                    <input type="radio" id="attendNo" name="attending" value="no">
+                                    <label for="attendNo">😢 Can't make it</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numGuests">Number of Children Attending</label>
+                            <input type="number" id="numGuests" name="numGuests" min="0" max="5" value="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="allergies">Allergies or Dietary Restrictions</label>
+                            <textarea id="allergies" name="allergies" placeholder="Any allergies we should know about?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Questions or Special Notes</label>
+                            <textarea id="comments" name="comments" placeholder="Anything else?"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">🦄 Send My RSVP! 🌈</button>
+                    </form>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    <span class="big-emoji">🎉🦄🌈</span>
+                    <h2>You're on the list!</h2>
+                    <p>Thanks for RSVPing! We're so excited to celebrate Hannah's 5th birthday with you. Get ready for unicorns, rainbows, and loads of fun!</p>
+                    <div class="date-reminder">📅 See you Sunday, March 29th at 1:30 PM<br>Baraboo Children's Museum</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZH0N6oRjZrDOLgI6wQXJZMpPtjmkt2plGCkl6Q0Cy4_rXMt0w_4F8VAMllHEWFxw2/exec';
+
+        document.getElementById('rsvpFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.disabled = true;
+            btn.textContent = '✨ Sending...';
+
+            const formData = {
+                parentName: document.getElementById('parentName').value,
+                email: document.getElementById('email').value,
+                childName: document.getElementById('childName').value,
+                attending: document.querySelector('input[name="attending"]:checked').value,
+                numGuests: document.getElementById('numGuests').value,
+                allergies: document.getElementById('allergies').value,
+                comments: document.getElementById('comments').value
+            };
+
+            try {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = SCRIPT_URL;
+                form.target = 'hidden_iframe';
+                for (const key in formData) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = formData[key];
+                    form.appendChild(input);
+                }
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+
+                setTimeout(() => {
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                }, 500);
+            } catch (error) {
+                alert('There was an error submitting your RSVP. Please try again or contact us directly.');
+                btn.disabled = false;
+                btn.textContent = '🦄 Send My RSVP! 🌈';
+            }
+        });
+    </script>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+</body>
+</html>
